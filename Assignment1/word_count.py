@@ -53,5 +53,5 @@ def generate_report(filename, word_count, unique = True, word_dct = False, get_w
 if __name__ == "__main__":
     read_file = '../test/wiki-en-train.word'
     word_count = word_report(read_file, special_chars='(LRB|RRB)')
-    write_file = './test/report.txt'
-    generate_report(write_file,word_count,unique = False,word_dct=True,get_words=True)
+    write_file = './report.txt'
+    generate_report(write_file, word_count, unique = False, word_dct = True, get_words = True)
