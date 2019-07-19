@@ -2,6 +2,8 @@
 NAME: Shubham Kumar
 PRN: 18030142032
 PROGRAM: MSc. C.A.(DS)
+
+Assignment 1 : To find the word count for the given file.
 """
 
 import re
@@ -10,15 +12,14 @@ import re
 class WordCount:
 
     def __init__(self):
-        self.counts = dict() # Word dictionary for the given input. Ex: {'a':1}
-        self.words = list() # Get word list for the given input.
+        self.counts = dict()  # Word dictionary for the given input. Ex: {'a':1}
+        self.words = list()  # Get word list for the given input.
 
     # Count the words in for the given lines and update it to dictionary.
     def word_count(self, line):
         try:
             token = re.compile(r'\w+')
-            self.words.extend( token.findall(line.lower()) )
-            # words = self.tokenizer.tokenize(line.lower())
+            self.words.extend(token.findall(line.lower()))
             for word in self.words:
                 if word in self.counts:
                     self.counts[word] += 1
