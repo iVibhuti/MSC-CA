@@ -1,18 +1,25 @@
+"""
+NAME: Shubham Kumar
+PRN: 18030142032
+PROGRAM: MSc. C.A.(DS)
+"""
+
 import re
-from nltk.tokenize import RegexpTokenizer
 
 
 class WordCount:
 
     def __init__(self):
         self.counts = dict() # Word dictionary for the given input. Ex: {'a':1}
-        self.tokenizer = RegexpTokenizer(r'\w+') # Get word list for the given input.
+        self.words = list() # Get word list for the given input.
 
     # Count the words in for the given lines and update it to dictionary.
     def word_count(self, line):
         try:
-            words = self.tokenizer.tokenize(line.lower())
-            for word in words:
+            token = re.compile(r'\w+')
+            self.words.extend( token.findall(line.lower()) )
+            # words = self.tokenizer.tokenize(line.lower())
+            for word in self.words:
                 if word in self.counts:
                     self.counts[word] += 1
                 else:
