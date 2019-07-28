@@ -12,10 +12,6 @@ from collections import Counter
 
 
 # #### Function to open a file in specified mode 
-
-# In[30]:
-
-
 def open_file(path,mode):
     try :
         file = open(path,mode)
@@ -25,10 +21,6 @@ def open_file(path,mode):
 
 
 # #### Function to read file and return success, file 
-
-# In[31]:
-
-
 def read_file(file):
     try: 
         text = file.readlines()
@@ -38,10 +30,6 @@ def read_file(file):
 
 
 # #### Function to close file and return success status
-
-# In[32]:
-
-
 def close_file(file):
     try:
         file.close()
@@ -51,10 +39,6 @@ def close_file(file):
 
 
 # #### Function to count words in the file and return counter object or failure
-
-# In[41]:
-
-
 def count_words(train_text):
     try:
         word_counter = Counter()
@@ -66,10 +50,6 @@ def count_words(train_text):
 
 
 # #### Function to calculate probabilities of the word (unigram)
-
-# In[56]:
-
-
 def calculate_probabilities(word_counter):
     probablities={}
     total_words = sum(word_counter.values())
@@ -78,20 +58,12 @@ def calculate_probabilities(word_counter):
 
 
 # #### Function to store model i.e probabilities into a model file
-
-# In[48]:
-
-
 def save_model(probablities,path,name):
     Frame = pandas.DataFrame({'words':list(probablities.keys()),'probabilities':list(probablities.values())}).to_csv(path+name)
     return path+name
 
 
 # #### Function to read model file and returns pandas.DataFrame type object
-
-# In[52]:
-
-
 def read_model(path):
     df = pandas.read_csv(path)
     df = df.drop(columns=df.columns[0],axis=1)
@@ -99,10 +71,6 @@ def read_model(path):
 
 
 # #### Function to test model on test data with specified lambda value and returns entropy and coverage
-
-# In[59]:
-
-
 def test_model(text,model,total_words,lambda_known):
     lambda_1 = lambda_known
     lambda_uk = 1-lambda_1
@@ -121,9 +89,8 @@ def test_model(text,model,total_words,lambda_known):
     return H/W,(W-unk)/W
 
 
-# In[60]:
 
-
+#Steps
 flag_open_train,file_train = open_file('./wiki-en-train.word','r')
 flag_read_train,train_text = read_file(file_train)
 flag_close_train = close_file(file_train)
@@ -131,20 +98,12 @@ word_counter = count_words(train_text)
 probabilities,vocab_size = calculate_probabilities(word_counter)
 model_file = save_model(probabilities,'./','model_file.csv')
 model = read_model(model_file)
-flag_open_test,file_test = open_file('./wiki-en-test.word')
+flag_open_test,file_test = open_file('./wiki-en-test.word','r')
 flag_read_test,test_text = read_file(file_test)
 flag_close_test = close_file(file_test)
 entropy,coverage = test_model(test_text,model,vocab_size,lambda_known=0.95)
 
-
-# In[61]:
-
-
 entropy
-
-
-# In[62]:
-
 
 coverage
 
