@@ -30,14 +30,14 @@ def test_unigram(probabilities, test_file):
             for i in m:
                 sentence = '<s>'+ i + '</s>'
                 sentence_lst.append(sentence.replace('\n',''))
-        for word in sentence_lst:
-            W += 1
-            P = LAMBDA_UNK / V
-            if word in probabilities:
-                P += LAMBDA_1 * probabilities[word]
-            else:
-                unk += 1
-            H += - math.log2(P)
+    for word in sentence_lst:
+        W += 1
+        P = LAMBDA_UNK / V
+        if word in probabilities:
+            P += LAMBDA_1 * probabilities[word]
+        else:
+            unk += 1
+        H += - math.log2(P)
     # Entropy H is average negative log2 likelihood per word.
     print('Entropy: {}'.format(H / W))
     # Coverage is the percentage of known words in the corpus.
