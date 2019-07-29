@@ -7,13 +7,15 @@ import re
 import math
 import pickle
 
+
 # Loding Model File
 def load_model(model_file):
     with open(model_file, 'rb') as file:
         probabilities = pickle.load(file)
     return probabilities
 
-# Testing Unigram Models
+
+# Testing Unigram Model
 def test_unigram(probabilities, test_file):
     sentence_lst = list()
     LAMBDA_1 = 0.95
@@ -30,6 +32,7 @@ def test_unigram(probabilities, test_file):
             for i in m:
                 sentence = '<s>'+ i + '</s>'
                 sentence_lst.append(sentence.replace('\n',''))
+
     for word in sentence_lst:
         W += 1
         P = LAMBDA_UNK / V
