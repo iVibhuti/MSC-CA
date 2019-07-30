@@ -14,7 +14,7 @@ class Tests(unittest.TestCase):
         )
 
     def test_close_file(self):
-        file = open('./../Data/wiki-en-train')
+        file = open('./data/wiki-en-train')
         flag = close_file(file)
         self.assertTrue(flag)
 

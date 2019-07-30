@@ -23,7 +23,7 @@ def occurence_count(text):
     return counts
 
 # main
-flag , file = open_file('./../Data/wiki-en-train')
+flag , file = open_file('./data/wiki-en-train')
 if flag:
     # print(file.read())
     # for key , value in occurence_count(file.read()).items():
